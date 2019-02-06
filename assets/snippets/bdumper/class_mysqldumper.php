@@ -67,18 +67,11 @@ class Mysqldumper
                 }
                 $output .= rtrim($insertdump, ',') . ");";
             }
-            // if ($callBack) {
-            //     if (!$callBack($output)) {
-            //         break;
-            //     }
-
-            //     $output = '';
-            // }
         }
-        // return ($callBack) ? true : $output;
-        $today = date('Y-m-d_H-i-s_00');
+        $today = date('Y-m-d_H-i-s');
         $path = "{$modx->config['snapshot_path']}{$today}.sql";
-        file_put_contents($path, $output, FILE_APPEND);
+		file_put_contents($path, $output, FILE_APPEND);
+		return true;
     }
 
     public function object2Array($obj)
