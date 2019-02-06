@@ -22,10 +22,9 @@ class Mysqldumper
         return $this->_isDroptables;
     }
 
-    public function createDump($callBack)
+    public function createDump()
     {
         $modx = evolutionCMS();
-        //print_r($modx);
         $lf = "\n";
         $result = $modx->db->query('SHOW TABLES');
         $tables = $this->result2Array(0, $result);

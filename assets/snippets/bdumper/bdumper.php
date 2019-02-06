@@ -47,4 +47,4 @@ if (!is_writable(rtrim($modx->config['snapshot_path'], '/'))) {
 $dbase = trim($dbase, '`');
 $dumper = new Mysqldumper($database_server, $dbase);
 $dumper->setDroptables(true);
-$dumper->createDump('snapshot');
+$dumper->createDump();
