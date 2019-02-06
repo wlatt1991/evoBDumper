@@ -1,7 +1,6 @@
 <?
 class Mysqldumper
 {
-    public $_dbtables;
     public $_isDroptables;
     public $dbname;
     public $database_server;
@@ -12,11 +11,6 @@ class Mysqldumper
         $this->database_server = $database_server;
         $this->setDroptables(false);
     }
-
-    public function setDBtables($dbtables)
-    {
-		$this->_dbtables = $dbtables;
-	}
 
     public function setDroptables($state)
     {
@@ -48,18 +42,9 @@ class Mysqldumper
         $output .= "# PHP Version: " . phpversion() . $lf;
         $output .= "# Database : `{$this->dbname}`{$lf}";
         $output .= "# Description: evoBDumper autobackup" . $lf;
-        $output .= "#" . $lf;
-        if (isset($this->_dbtables) && count($this->_dbtables)) {
-            $this->_dbtables = implode(',', $this->_dbtables);
-        } else {
-            unset($this->_dbtables);
-        }
+		$output .= "#" . $lf;
+		
         foreach ($tables as $tblval) {
-            if (isset($this->_dbtables)) {
-                if (strstr(",{$this->_dbtables},", ",{$tblval},") === false) {
-                    continue;
-                }
-            }
             $output .= "{$lf}{$lf}# --------------------------------------------------------{$lf}{$lf}";
             $output .= "#{$lf}# Table structure for table `{$tblval}`{$lf}";
             $output .= "#{$lf}{$lf}";
