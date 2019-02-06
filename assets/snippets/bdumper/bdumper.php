@@ -45,6 +45,7 @@ $today = date('Y-m-d_H-i-s');
 $path = "{$modx->config['snapshot_path']}{$today}.sql";
 @set_time_limit(120);
 $dbase = trim($dbase, '`');
+print_r($modx);
 $dumper = new Mysqldumper($database_server, $dbase);
 $dumper->setDroptables(true);
 $dumper->createDump('snapshot');
