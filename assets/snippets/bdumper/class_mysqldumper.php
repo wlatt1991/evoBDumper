@@ -29,7 +29,7 @@ class Mysqldumper{
 		$output .= "# Server version: ". $modx->db->getVersion() . $lf;
 		$output .= "# PHP Version: " . phpversion() . $lf;
 		$output .= "# Database : `{$this->dbname}`{$lf}";
-		$output .= "# Description: bdumper autobackup" . $lf;
+		$output .= "# Description: evoBDumper autobackup" . $lf;
 		$output .= "#";
 		if (isset($this->_dbtables) && count($this->_dbtables)){
 			$this->_dbtables = implode(',',$this->_dbtables);
