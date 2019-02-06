@@ -12,7 +12,7 @@ class Mysqldumper{
 	function setDroptables($state){ $this->_isDroptables = $state; }
 	function isDroptables()       { return $this->_isDroptables; }
 	function createDump($callBack){
-		global $modx;
+		$modx = evolutionCMS();
 		$lf = "\n";
 		$result = $modx->db->query('SHOW TABLES');
 		$tables = $this->result2Array(0, $result);
@@ -71,18 +71,21 @@ class Mysqldumper{
 		}
 		return ($callBack) ? true: $output;
 	}
-	function object2Array($obj){
-		$array = null;
-		if(is_object($obj)){
-			$array = array();
-			foreach (get_object_vars($obj) as $key => $value){
-				if (is_object($value))
-						$array[$key] = $this->object2Array($value);
-				else    $array[$key] = $value;
-			}
-		}
-		return $array;
-	}
+	public function object2Array($obj)
+    {
+        $array = null;
+        if (is_object($obj)) {
+            $array = array();
+            foreach (get_object_vars($obj) as $key => $value) {
+                if (is_object($value)) {
+                    $array[$key] = $this->object2Array($value);
+                } else {
+                    $array[$key] = $value;
+                }
+            }
+        }
+        return $array;
+    }
 	public function loadObjectList($key = '', $resource)
     {
         $modx = evolutionCMS();
