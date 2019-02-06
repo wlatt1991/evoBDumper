@@ -15,8 +15,8 @@ if (!file_exists("{$modx->config['snapshot_path']}.htaccess")) {
     file_put_contents("{$modx->config['snapshot_path']}.htaccess", $htaccess);
 }
 
-
 @set_time_limit(120);
+global $database_server, $dbase;
 $dbase = trim($dbase, '`');
 $dumper = new evoBDumper($database_server, $dbase);
 $dumper->setDroptables(true);
