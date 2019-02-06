@@ -4,19 +4,6 @@ require MODX_BASE_PATH . 'assets/snippets/bdumper/class_mysqldumper.php';
 global $path;
 $modx = evolutionCMS();
 
-function parsePlaceholder($tpl = '', $ph = array())
-{
-    if (empty($ph) || empty($tpl)) {
-        return $tpl;
-    }
-
-    foreach ($ph as $k => $v) {
-        $k = "[+{$k}+]";
-        $tpl = str_replace($k, $v, $tpl);
-    }
-    return $tpl;
-}
-
 $modx->config['snapshot_path'] = MODX_BASE_PATH . 'assets/backup/';
 
 if (!is_dir(rtrim($modx->config['snapshot_path'], '/'))) {
@@ -27,11 +14,6 @@ if (!is_dir(rtrim($modx->config['snapshot_path'], '/'))) {
 if (!file_exists("{$modx->config['snapshot_path']}.htaccess")) {
     $htaccess = "order deny,allow\ndeny from all\n";
     file_put_contents("{$modx->config['snapshot_path']}.htaccess", $htaccess);
-}
-
-if (!is_writable(rtrim($modx->config['snapshot_path'], '/'))) {
-    echo parsePlaceholder($_lang["bkmgr_alert_mkdir"], $modx->config['snapshot_path']);
-    exit;
 }
 
 print_r($modx);
