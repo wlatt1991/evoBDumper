@@ -25,7 +25,7 @@ class Mysqldumper
     public function createDump($callBack)
     {
 		$modx = evolutionCMS();
-		print_r($modx);
+		//print_r($modx);
         $lf = "\n";
         $result = $modx->db->query('SHOW TABLES');
         $tables = $this->result2Array(0, $result);
