@@ -14,18 +14,18 @@ class Mysqldumper
 
     public function setDroptables($state)
     {
-		$this->_isDroptables = $state;
-	}
+        $this->_isDroptables = $state;
+    }
 
     public function isDroptables()
     {
-		return $this->_isDroptables;
-	}
+        return $this->_isDroptables;
+    }
 
     public function createDump($callBack)
     {
-		$modx = evolutionCMS();
-		//print_r($modx);
+        $modx = evolutionCMS();
+        //print_r($modx);
         $lf = "\n";
         $result = $modx->db->query('SHOW TABLES');
         $tables = $this->result2Array(0, $result);
@@ -43,8 +43,8 @@ class Mysqldumper
         $output .= "# PHP Version: " . phpversion() . $lf;
         $output .= "# Database : `{$this->dbname}`{$lf}";
         $output .= "# Description: evoBDumper autobackup" . $lf;
-		$output .= "#" . $lf;
-		
+        $output .= "#" . $lf;
+
         foreach ($tables as $tblval) {
             $output .= "{$lf}{$lf}# --------------------------------------------------------{$lf}{$lf}";
             $output .= "#{$lf}# Table structure for table `{$tblval}`{$lf}";
@@ -68,17 +68,20 @@ class Mysqldumper
                 }
                 $output .= rtrim($insertdump, ',') . ");";
             }
-            if ($callBack) {
-                if (!$callBack($output)) {
-                    break;
-                }
+            // if ($callBack) {
+            //     if (!$callBack($output)) {
+            //         break;
+            //     }
 
-                $output = '';
-            }
+            //     $output = '';
+            // }
         }
-        return ($callBack) ? true : $output;
-	}
-	
+        // return ($callBack) ? true : $output;
+        $today = date('Y-m-d_H-i-s_00');
+        $path = "{$modx->config['snapshot_path']}{$today}.sql";
+        file_put_contents($path, $dumpstring, FILE_APPEND);
+    }
+
     public function object2Array($obj)
     {
         $array = null;
@@ -93,8 +96,8 @@ class Mysqldumper
             }
         }
         return $array;
-	}
-	
+    }
+
     public function loadObjectList($key = '', $resource)
     {
         $modx = evolutionCMS();
@@ -108,8 +111,8 @@ class Mysqldumper
         }
         $modx->db->freeResult($resource);
         return $array;
-	}
-	
+    }
+
     public function result2Array($numinarray = 0, $resource)
     {
         $modx = evolutionCMS();
