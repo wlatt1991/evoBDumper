@@ -3,21 +3,6 @@
 	require(MODX_BASE_PATH.'assets/snippets/bdumper/class_mysqldumper.php');
 	global $path;
 	
-	function callBack(&$dumpstring){
-		global $modx;
-		$today = $modx->toDateFormat(time(),'dateOnly');
-		$today = str_replace('/', '-', $today);
-		$today = strtolower($today);
-		if(!headers_sent()){
-			header('Expires: 0');
-			header('Cache-Control: private');
-			header('Pragma: cache');
-			header('Content-type: application/download');
-			header("Content-Disposition: attachment; filename={$today}_database_backup.sql");
-		}
-		echo $dumpstring;
-		return true;
-	}
 	function snapshot(&$dumpstring){
 		global $path;
 		file_put_contents($path,$dumpstring,FILE_APPEND);
@@ -44,10 +29,7 @@
 		echo parsePlaceholder($_lang["bkmgr_alert_mkdir"],$modx->config['snapshot_path']);
 		exit;
 	}
-	$today = $modx->toDateFormat(time());
-	$today = str_replace(array('/',' '), '_', $today);
-	$today = str_replace(':', '-', $today);
-	$today = strtolower($today);
+	$today = date('Y-m-d_H-i-s');
 	$path = "{$modx->config['snapshot_path']}{$today}.sql";
 	@set_time_limit(120);
 	$dumper = new Mysqldumper($database_server, $database_user, $database_password, $dbase);
