@@ -3,9 +3,8 @@ if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 //$modx = evolutionCMS();
 global $modx;
 echo 'test';
+print_r($modx);
 print_r('adsf');
-print_r($modx->config);
-return $modx->config;
 /*
 require MODX_BASE_PATH . 'assets/snippets/bdumper/class_mysqldumper.php';
 $modx = evolutionCMS();
