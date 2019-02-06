@@ -19,6 +19,6 @@ if (!file_exists("{$modx->config['snapshot_path']}.htaccess")) {
 print_r($modx);
 @set_time_limit(120);
 $dbase = trim($dbase, '`');
-$dumper = new Mysqldumper($database_server, $dbase);
+$dumper = new evoBDumper($database_server, $dbase);
 $dumper->setDroptables(true);
 $dumper->createDump();

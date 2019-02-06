@@ -1,5 +1,5 @@
 <?
-class Mysqldumper
+class evoBDumper
 {
     public $_isDroptables;
     public $dbname;
