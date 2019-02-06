@@ -1,6 +1,6 @@
 //<?php
 /**
- * bdumper
+ * evoBDumper
  * 
  * Snippet to automatically create backups
  *
