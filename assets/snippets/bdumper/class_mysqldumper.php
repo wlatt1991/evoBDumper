@@ -6,9 +6,10 @@ class Mysqldumper
     public $dbname;
     public $database_server;
 
-    public function __construct($database_server, $database_user, $database_password, $dbname)
+    public function __construct($database_server, $dbname)
     {
         $this->dbname = $dbname;
+        $this->database_server = $database_server;
         $this->setDroptables(false);
     }
 
@@ -39,7 +40,7 @@ class Mysqldumper
         }
         $output = "#{$lf}";
         $output .= "# " . addslashes($modx->config['site_name']) . " Database Dump{$lf}";
-        $output .= "# MODX Version:{$modx->config['settings_version']}{$lf}";
+        $output .= "# MODX Version: {$modx->config['settings_version']}{$lf}";
         $output .= "#{$lf}";
         $output .= "# Host:{$this->database_server}{$lf}";
         $output .= "# Generation Time: " . $modx->toDateFormat(time()) . $lf;
@@ -47,7 +48,7 @@ class Mysqldumper
         $output .= "# PHP Version: " . phpversion() . $lf;
         $output .= "# Database : `{$this->dbname}`{$lf}";
         $output .= "# Description: evoBDumper autobackup" . $lf;
-        $output .= "#";
+        $output .= "#" . $lf;
         if (isset($this->_dbtables) && count($this->_dbtables)) {
             $this->_dbtables = implode(',', $this->_dbtables);
         } else {

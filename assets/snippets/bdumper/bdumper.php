@@ -2,6 +2,7 @@
 	if(!defined('MODX_BASE_PATH')){die('What are you doing? Get out of here!');}
 	require(MODX_BASE_PATH.'assets/snippets/bdumper/class_mysqldumper.php');
 	global $path;
+	$modx = evolutionCMS();
 	
 	function snapshot(&$dumpstring){
 		global $path;
@@ -33,7 +34,7 @@
 	$path = "{$modx->config['snapshot_path']}{$today}.sql";
 	@set_time_limit(120);
 	$dbase = trim($dbase, '`');
-	$dumper = new Mysqldumper($database_server, $database_user, $database_password, $dbase);
+	$dumper = new Mysqldumper($database_server, $dbase);
 	$dumper->setDroptables(true);
 	$dumper->createDump('snapshot');
 ?>
