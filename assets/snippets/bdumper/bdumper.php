@@ -1,7 +1,7 @@
 <?php
 if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
-$modx = evolutionCMS();
-print_r($modx);
+//$modx = evolutionCMS();
+print_r(evolutionCMS());
 /*
 require MODX_BASE_PATH . 'assets/snippets/bdumper/class_mysqldumper.php';
 $modx = evolutionCMS();
