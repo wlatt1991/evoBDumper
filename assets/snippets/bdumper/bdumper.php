@@ -4,7 +4,7 @@ if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 require MODX_BASE_PATH . 'assets/snippets/bdumper/class_mysqldumper.php';
 $modx = evolutionCMS();
 $modx->config['snapshot_path'] = MODX_BASE_PATH . 'assets/backup/';
-echo $modx->config['snapshot_path'];
+
 if (!is_dir(rtrim($modx->config['snapshot_path'], '/'))) {
     mkdir(rtrim($modx->config['snapshot_path'], '/'));
     @chmod(rtrim($modx->config['snapshot_path'], '/'), 0777);
