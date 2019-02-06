@@ -4,7 +4,7 @@ class Mysqldumper{
 	var $_isDroptables;
 	var $database_server;
 	var $dbname;
-	function Mysqldumper($database_server, $database_user, $database_password, $dbname){
+	function __construct($database_server, $database_user, $database_password, $dbname){
 		$this->dbname = $dbname;
 		$this->setDroptables(false);
 	}
