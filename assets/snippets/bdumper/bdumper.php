@@ -2,6 +2,7 @@
 if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 //$modx = evolutionCMS();
 global $modx;
+echo 'test';
 print_r('adsf');
 return $modx->config;
 /*
