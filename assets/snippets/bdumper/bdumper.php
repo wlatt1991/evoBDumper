@@ -19,4 +19,4 @@ if (!file_exists("{$modx->config['snapshot_path']}.htaccess")) {
 $dbase = trim($dbase, '`');
 $dumper = new evoBDumper($database_server, $dbase);
 $dumper->setDroptables(true);
-$dumper->createDump();
+return $dumper->createDump();
