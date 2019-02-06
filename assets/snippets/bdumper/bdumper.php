@@ -1,6 +1,8 @@
 <?php
 if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
-
+$modx = evolutionCMS();
+print_r($modx);
+/*
 require MODX_BASE_PATH . 'assets/snippets/bdumper/class_mysqldumper.php';
 $modx = evolutionCMS();
 $modx->config['snapshot_path'] = MODX_BASE_PATH . 'assets/backup/';
@@ -20,3 +22,4 @@ $dbase = trim($dbase, '`');
 $dumper = new evoBDumper($database_server, 'rrr');
 $dumper->setDroptables(true);
 $dumper->createDump();
+*/
