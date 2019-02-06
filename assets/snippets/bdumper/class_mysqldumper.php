@@ -79,7 +79,7 @@ class Mysqldumper
         // return ($callBack) ? true : $output;
         $today = date('Y-m-d_H-i-s_00');
         $path = "{$modx->config['snapshot_path']}{$today}.sql";
-        file_put_contents($path, $dumpstring, FILE_APPEND);
+        file_put_contents($path, $output, FILE_APPEND);
     }
 
     public function object2Array($obj)
