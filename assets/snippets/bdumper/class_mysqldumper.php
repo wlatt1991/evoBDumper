@@ -68,7 +68,7 @@ class evoBDumper
                 $output .= rtrim($insertdump, ',') . ");";
             }
         }
-        $today = date('Y-m-d_H-i-s');
+        $today = date('evoBDumper_Y-m-d_H-i-s');
         $path = "{$modx->config['snapshot_path']}{$today}.sql";
 		file_put_contents($path, $output, FILE_APPEND);
 		return 'snapshot created';
