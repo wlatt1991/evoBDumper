@@ -1,7 +1,7 @@
 <?php
 if (!defined('MODX_BASE_PATH')) {die('What are you doing? Get out of here!');}
 
-require MODX_BASE_PATH . 'assets/snippets/bdumper/class_mysqldumper.php';
+require MODX_BASE_PATH . 'assets/snippets/bdumper/class_evobdumper.php';
 $modx->config['snapshot_path'] = MODX_BASE_PATH . 'assets/backup/';
 
 if (!is_dir(rtrim($modx->config['snapshot_path'], '/'))) {
