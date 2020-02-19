@@ -1,17 +1,4 @@
-//<?php
-/**
- * evoBDumper
- *
- * Plugin to automatically create backups
- * 
- * @category    plugin
- * @version     0.1
- * @author      Wlatt
- * @internal    @modx_category Manager and Admin
- * @internal    @properties &templates=ID шаблонов на которых рабатывает плагин;text;7 &jquery=jQuery;text;0
- * @internal    @events OnLoadWebDocument,OnWebPagePrerender
- * @internal    @installset base
- */
+<?php
 
 if (!defined('MODX_BASE_PATH')) {
 	die('What are you doing? Get out of here!');
@@ -38,7 +25,7 @@ switch ($e->name) {
         $dbase = trim($dbase, '`');
         $dumper = new evoBDumper($database_server, $dbase);
         $dumper->setDroptables(true);
-        //$dumper->createDump();
+        $dumper->createDump();
         break;
     default:
         return;
