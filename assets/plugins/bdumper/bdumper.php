@@ -41,3 +41,5 @@ switch ($e->name) {
         $dumper->createDump();
 		break;
 }
+
+return;
