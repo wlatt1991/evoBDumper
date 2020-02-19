@@ -69,9 +69,9 @@ class evoBDumper
             }
         }
         $today = date('Y-m-d_H-i-s');
-        $path = "{$modx->config['snapshot_path']}evoBDumper_{$today}.sql";
+        $path = "{$modx->config['snapshot_path']}{$today}.sql";
 		file_put_contents($path, $output, FILE_APPEND);
-		//return 'snapshot created';
+	return 'snapshot created';
     }
 
     public function object2Array($obj)
