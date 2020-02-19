@@ -38,8 +38,8 @@ switch ($e->name) {
         $dbase = trim($dbase, '`');
         $dumper = new evoBDumper($database_server, $dbase);
         $dumper->setDroptables(true);
-        $dumper->createDump();
-		break;
+        //$dumper->createDump();
+        break;
+    default:
+        return;
 }
-
-return;
