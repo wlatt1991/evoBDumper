@@ -24,7 +24,7 @@ class evoBDumper
 
     public function createDump()
     {
-        $modx = evolutionCMS();
+        global $modx;
         $lf = "\n";
         $result = $modx->db->query('SHOW TABLES');
         $tables = $this->result2Array(0, $result);
@@ -92,7 +92,7 @@ class evoBDumper
 
     public function loadObjectList($key = '', $resource)
     {
-        $modx = evolutionCMS();
+        global $modx;
         $array = array();
         while ($row = $modx->db->getRow($resource, 'object')) {
             if ($key) {
@@ -107,7 +107,7 @@ class evoBDumper
 
     public function result2Array($numinarray = 0, $resource)
     {
-        $modx = evolutionCMS();
+        global $modx;
         $array = array();
         while ($row = $modx->db->getRow($resource, 'num')) {
             $array[] = $row[$numinarray];
